@@ -10,6 +10,6 @@ class DashboardController extends Controller
 {
     public function __invoke(): Factory|View|Application
     {
-        return view('dashboard');
+        return view('pages.dashboard');
     }
 }
