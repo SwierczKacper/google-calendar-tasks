@@ -1,6 +1,7 @@
 # Custom rules
 .idea
 resources/admin/node_modules/
+package-lock.json
 
 ### Laravel ###
 /vendor/
@@ -16,7 +17,7 @@ app/storage/
 # Laravel 5 & Lumen specific
 public/storage
 public/hot
-public
+public/assets
 
 # Laravel 5 & Lumen specific with changed public path
 public_html/storage
