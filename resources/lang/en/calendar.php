@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'navigation_events' => 'Events',
+
     'done_suffix' => ' - Done',
     'skipped_suffix' => ' - Skipped',
 

@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'navigation_events' => 'Zadania',
+
     'done_suffix' => ' - Zrobione',
     'skipped_suffix' => ' - Pominięto',
 
