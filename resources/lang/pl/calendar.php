@@ -4,7 +4,7 @@ return [
     'navigation_events' => 'Zadania',
 
     'done_suffix' => ' - Zrobione',
-    'skipped_suffix' => ' - Pominięto',
+    'skipped_suffix' => ' - Pominięte',
 
     'events_count_title' => 'Ilość zadań na dziś: :count',
 
