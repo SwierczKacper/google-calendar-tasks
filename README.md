@@ -17,7 +17,7 @@ The solution for that problem could be normal events where we can set specific s
 The solution for this problem is this app which is facade for Google Calendar. It grabs all events for specific day from Google Calendar and let us easily mark them as done by adding suffix "- Done" (or another). Also we have information about start, end time and time left to end if during progress.
 
 One of the best feature of this app is "Packages" for specific days.
-###### After some time of using this app (I have used older version of this facade from january 2021 until release this version) I faced big problem with adding new events between existing ones or reordering existing ones, it takes me a lot of time (in extreme cases about 4 hours).
+###### After one year of using this app (I have used older version of this facade from january 2021 until january 2022) I faced big problem with adding new events between existing ones or reordering existing ones, it takes me a lot of time (in extreme cases about 4 hours).
 
 Packages are solution for this problem, we can set one package with 30 events in specific order and use this packages on different days started on different time.
 Then we can easily reorder events or add new events in package and system automatically will reorder and start time of other events
