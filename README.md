@@ -1,4 +1,4 @@
-### Introduction
+## Introduction
 Google Calendar App offers "Goals" feature where you can set your custom goal and mark them as "done" by tapping on them.
 
 <img src="https://user-images.githubusercontent.com/49414354/149644387-99989c5c-2a87-4b55-879d-3a4920f77750.png" style="width:300px">
@@ -13,7 +13,7 @@ After creating "Goal" with this method, we can drag it to specific time but this
 
 The solution for that problem could be normal events where we can set specific start time, end time and repeat frequency, but this solution also have one big defect, we cannot mark that event as done just like we can do it in goals.
 
-### Conclusion
+## Conclusion
 The solution for this problem is this app which is facade for Google Calendar. It grabs all events for specific day from Google Calendar and let us easily mark them as done by adding suffix "- Done" (or another). Also we have information about start, end time and time left to end if during progress.
 
 One of the best feature of this app is "Packages" for specific days.
@@ -22,7 +22,7 @@ One of the best feature of this app is "Packages" for specific days.
 Packages are solution for this problem, we can set one package with 30 events in specific order and use this packages on different days started on different time.
 Then we can easily reorder events or add new events in package and system automatically will reorder and start time of other events
 
-### Installation
+## Installation
 1. composer install
 2. composer update
 3. npm install
@@ -47,5 +47,8 @@ Then we can easily reorder events or add new events in package and system automa
 9. php artisan migrate
 10. Put in /storage/app/google-calendar/ credentials json (i preffer service-account-credentials.json), look at: https://github.com/spatie/laravel-google-calendar#installation
 
-### Trello
-Tasks list: https://trello.com/b/CcDx3qCO/google-calendar-tasks
+## Contributors
+Feel free to contribute
+
+## Tasks list
+Trello: https://trello.com/b/CcDx3qCO/google-calendar-tasks
