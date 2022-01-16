@@ -1,0 +1,27 @@
+.event
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.event__date
+{
+    display: flex;
+    position: absolute;
+    left: 0;
+}
+
+.event__actions
+{
+    display: flex;
+    position: absolute;
+    right: 0;
+}
+
+.event__name
+{
+    max-width: 70%;
+    text-align: center;
+}

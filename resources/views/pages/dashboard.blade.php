@@ -13,8 +13,7 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('/css/app.css', 'assets') }}">
 
-        <!-- Scripts -->
-        <script src="{{ mix('/js/app.js', 'assets') }}" defer></script>
+        @livewireStyles
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
@@ -25,5 +24,10 @@
                 @livewire('events-list')
             </main>
         </div>
+
+        @livewireScripts
+
+        <!-- Scripts -->
+        <script src="{{ mix('/js/app.js', 'assets') }}" defer></script>
     </body>
 </html>
