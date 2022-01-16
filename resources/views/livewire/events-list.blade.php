@@ -26,12 +26,20 @@
                                 <div class="event__name ml-1">{{ $event['name'] }}</div>
                                 <div class="event__actions" style="color: {{ $event['color'] }}">
                                     <button
-                                        wire:click="markAsDone('{{ $event['id'] }}')"
+                                        wire:click="markEventAsgit('{{ $event['id'] }}', 'done')"
 
                                         type="button"
                                         class="bg-white-700 font-medium rounded-lg text-xl text-center inline-flex items-center"
                                     >
                                         <i class="fas fa-check"></i>
+                                    </button>
+                                    <button
+                                        wire:click="markEventAs('{{ $event['id'] }}', 'skipped')"
+
+                                        type="button"
+                                        class="bg-white-700 font-medium rounded-lg text-xl text-center inline-flex items-center ml-3"
+                                    >
+                                        <i class="fas fa-times"></i>
                                     </button>
                                 </div>
                             </article>

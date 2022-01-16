@@ -37,8 +37,6 @@ class EventsList extends Component
                 ];
             }
         })->filter();
-
-        \Debugbar::info('test');
     }
 
     /**
@@ -74,17 +72,17 @@ class EventsList extends Component
     }
 
     /**
-     * Mark event as done by changing it`s name.
+     * Mark event as done or skipped by changing it`s name.
      */
-    public function markAsDone(string $eventId): void
+    public function markEventAs(string $eventId, string $action): void
     {
         $event = Event::find($eventId); //find google calendar event by id
 
-        if ($this->determineIfEventClear($event->name)) {
-            $event->name .= __('calendar.done_suffix');
-            $event->save();
+        if ($this->determineIfEventClear($event->name)) { //check if name can be changed
+            $event->name .= __('calendar.' . $action . '_suffix'); //change name
+            $event->save(); //save event
 
-            Cache::delete('calendar_events_' . $this->today); //clear cache because we are loading cached events
+            Cache::delete('calendar_events_' . $this->today); //clear cache, because in method boot() we are loading cached events
         }
     }
 
