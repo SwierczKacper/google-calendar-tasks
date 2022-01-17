@@ -27,7 +27,7 @@
                                 @if(!$event['marked'])
                                     <div class="event__actions" style="color: {{ $event['color'] }}">
                                         <button
-                                            wire:click="markEventAsgit('{{ $event['id'] }}', 'done')"
+                                            wire:click="markEventAs('{{ $event['id'] }}', 'done')"
 
                                             type="button"
                                             class="bg-white-700 font-medium rounded-lg text-xl text-center inline-flex items-center"
