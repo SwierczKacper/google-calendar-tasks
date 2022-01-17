@@ -1,10 +1,34 @@
 <div>
     <!-- Page Heading -->
     <header class="bg-white shadow">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('calendar.events_count_title', ['count' => count($events)]) }}
-            </h2>
+        <div class="flex justify-center items-center">
+            <div class="w-4/5 flex justify-between items-center py-6 px-4 text-center">
+                <button
+                    wire:click="previousDay()"
+
+                    type="button"
+                    class="bg-white-700 font-medium rounded-lg text-xl text-center inline-flex items-center"
+                >
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <span >
+                    <h1 class="text-xl font-semibold text-gray-800 leading-tight">{{ Str::upper(\Carbon\Carbon::parse($today)->translatedFormat('l')) }}</h1>
+                    <h2 class="text-lg font-semibold text-gray-800 leading-tight">
+                        {{ $today }}
+                    </h2>
+                    <h3 class="text-sm font-semibold text-gray-800 leading-tight">
+                        {{ __('calendar.events_count_title', ['count' => count($events)]) }}
+                    </h3>
+                </span>
+                <button
+                    wire:click="nextDay()"
+
+                    type="button"
+                    class="bg-white-700 font-medium rounded-lg text-xl text-center inline-flex items-center"
+                >
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
     </header>
 

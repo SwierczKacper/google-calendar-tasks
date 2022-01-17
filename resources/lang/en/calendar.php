@@ -6,7 +6,7 @@ return [
     'done_suffix' => ' - Done',
     'skipped_suffix' => ' - Skipped',
 
-    'events_count_title' => 'Tasks count for today: :count',
+    'events_count_title' => 'Tasks count: :count',
 
     'settings_label' => 'Settings',
     'hidden_label' => 'Hidden',

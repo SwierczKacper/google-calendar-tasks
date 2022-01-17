@@ -75,6 +75,18 @@ class EventsList extends Component
         }
     }
 
+    public function nextDay()
+    {
+        $this->today = Carbon::parse($this->today)->addDay()->format('d.m.Y');
+        $this->tomorrow = Carbon::parse($this->tomorrow)->addDay()->format('d.m.Y');
+    }
+
+    public function previousDay()
+    {
+        $this->today = Carbon::parse($this->today)->subDay()->format('d.m.Y');
+        $this->tomorrow = Carbon::parse($this->tomorrow)->subDay()->format('d.m.Y');
+    }
+
     /**
      * Clear events cache by specific key.
      */

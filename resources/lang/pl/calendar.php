@@ -6,7 +6,7 @@ return [
     'done_suffix' => ' - Zrobione',
     'skipped_suffix' => ' - Pominięte',
 
-    'events_count_title' => 'Ilość zadań na dziś: :count',
+    'events_count_title' => 'Ilość zadań: :count',
 
     'settings_label' => 'Ustawienia',
     'hidden_label' => 'Ukryte',
