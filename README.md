@@ -1,9 +1,6 @@
 # Google Calendar Tasks [![PHP][badge_php] ![Laravel][badge_laravel] ![Livewire][badge_livewire]][github-repo]
 
 [![Github Workflow Status][badge_build]][github-status]
-[![Code Coverage][badge_coverage]][scrutinizer]
-[![Scrutinizer Code Quality][badge_quality]][scrutinizer]
-[![Code Intelligence Status][badge_code_intelligence]][code-intelligence]
 [![Github Issues][badge_issues]][github-issues]
 
 
@@ -73,16 +70,10 @@ Any ideas are welcome. Feel free to submit any issues or pull requests, please c
 [github-repo]:   https://github.com/SwierczKacper/google-calendar-tasks
 [github-status]: https://github.com/SwierczKacper/google-calendar-tasks/actions
 [github-issues]: https://github.com/SwierczKacper/google-calendar-tasks/issues
-[scrutinizer]:   https://scrutinizer-ci.com/g/SwierczKacper/google-calendar-tasks/?branch=master
-[insight]:       https://insight.sensiolabs.com/projects/8ed2a842-3f4e-4422-a881-cf7eb72a595d
-[code-intelligence]:       https://scrutinizer-ci.com/code-intelligence
 
 [badge_laravel]:      https://img.shields.io/badge/Laravel-8.79.0-red
 [badge_livewire]:      https://img.shields.io/badge/Livewire-2.9.0-blue
 [badge_php]:      https://img.shields.io/badge/PHP-%5E8.0-blueviolet
 
 [badge_build]:       https://img.shields.io/github/workflow/status/SwierczKacper/google-calendar-tasks/run-tests?style=flat-square
-[badge_coverage]:     https://scrutinizer-ci.com/g/SwierczKacper/google-calendar-tasks/badges/coverage.png?b=master
-[badge_quality]:      https://scrutinizer-ci.com/g/SwierczKacper/google-calendar-tasks/badges/quality-score.png?b=master
-[badge_code_intelligence]:      https://scrutinizer-ci.com/g/SwierczKacper/google-calendar-tasks/badges/code-intelligence.svg?b=master
 [badge_issues]:       https://img.shields.io/github/issues/SwierczKacper/google-calendar-tasks.svg?style=flat-square

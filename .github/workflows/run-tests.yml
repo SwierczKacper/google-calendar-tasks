@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   tests:
-    runs-on: ubuntu-latest 
+    runs-on: ubuntu-latest  
 
     strategy:
       fail-fast: true
@@ -38,9 +38,3 @@ jobs:
   
       - name: Laravel PHPUnit
         uses: nathanheffley/laravel-phpunit-action@v0.1.0
-          
-      - uses: actions/checkout@v2
-      - name: Upload Scrutinizer coverage
-        uses: sudo-bot/action-scrutinizer@latest
-        with:
-            cli-args: "--format=php-clover coverage/clover.xml"
