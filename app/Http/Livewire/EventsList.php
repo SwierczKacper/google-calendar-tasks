@@ -51,13 +51,13 @@ class EventsList extends Component
     /**
      * Return hex color for event.
      */
-    public function getEventColor(int $colorId): string
+    public function getEventColor(int $colorId = null): string
     {
         if (config('google-calendar.colors') && Arr::has(config('google-calendar.colors'), $colorId)) {
             $color = config('google-calendar.colors')[$colorId];
         }
 
-        return $color ?? '#fff';
+        return $color ?? '#000';
     }
 
     /**
