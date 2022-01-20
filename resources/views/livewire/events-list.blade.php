@@ -38,7 +38,13 @@
             <div class="px-2 w-4/5">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     @foreach($events as $event)
-                        <div class="p-6 bg-white border-b-2 border-gray-200" style="border-color: {{ $event['color'] }}; opacity: {{ !$event['marked'] ? 1 : 0.5 }}">
+                        <div
+                            x-data=""
+                            id="event-{{ $event['id'] }}"
+
+                            class="p-6 bg-white border-b-2 border-gray-200"
+                            style="border-color: {{ $event['color'] }}; opacity: {{ !$event['marked'] ? 1 : 0.5 }}"
+                        >
                             <article class="event">
                                 <div class="event__date">
                                     <div class="date__start">{{ $event['startDate']->format('H:i') }} =></div>
@@ -52,6 +58,7 @@
                                     <div class="event__actions" style="color: {{ $event['color'] }}">
                                         <button
                                             wire:click="markEventAs('{{ $event['id'] }}', 'done')"
+                                            x-on:click="document.querySelector('#event-{{ $event['id'] }}').remove()"
 
                                             type="button"
                                             class="bg-white-700 font-medium rounded-lg text-xl text-center inline-flex items-center"
@@ -60,6 +67,7 @@
                                         </button>
                                         <button
                                             wire:click="markEventAs('{{ $event['id'] }}', 'skipped')"
+                                            x-on:click="document.querySelector('#event-{{ $event['id'] }}').remove()"
 
                                             type="button"
                                             class="bg-white-700 font-medium rounded-lg text-xl text-center inline-flex items-center ml-3"
