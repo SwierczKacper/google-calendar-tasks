@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Spatie\GoogleCalendar\Event;
+use Symfony\Component\ErrorHandler\Debug;
 
 class EventsList extends Component
 {
@@ -77,14 +78,24 @@ class EventsList extends Component
 
     public function nextDay()
     {
-        $this->today = Carbon::parse($this->today)->addDay()->format('d.m.Y');
+        $this->today = $this->tomorrow;
         $this->tomorrow = Carbon::parse($this->tomorrow)->addDay()->format('d.m.Y');
+
+        if($this->today >= Carbon::today()) { //if today or future
+            $this->displayMarked = false; //hide already marked events
+        }
     }
 
     public function previousDay()
     {
-        $this->today = Carbon::parse($this->today)->subDay()->format('d.m.Y');
-        $this->tomorrow = Carbon::parse($this->tomorrow)->subDay()->format('d.m.Y');
+        $yesterday = Carbon::parse($this->today)->subDay();
+
+        $this->tomorrow = $this->today;
+        $this->today = $yesterday->format('d.m.Y');
+
+        if ($yesterday < Carbon::today()) { //if previous day already passed
+            $this->displayMarked = true; //show already marked events
+        }
     }
 
     /**
