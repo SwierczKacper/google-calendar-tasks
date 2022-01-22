@@ -11,4 +11,6 @@ return [
     'settings_label' => 'Settings',
     'hidden_label' => 'Hidden',
     'hidden_info' => 'Display already marked events.',
+
+    'event_status_updating' => 'Updating...',
 ];

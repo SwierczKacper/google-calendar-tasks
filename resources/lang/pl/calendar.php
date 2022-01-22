@@ -11,4 +11,6 @@ return [
     'settings_label' => 'Ustawienia',
     'hidden_label' => 'Ukryte',
     'hidden_info' => 'Wyświetl już oznaczone zadania.',
+
+    'event_status_updating' => 'Aktualizuje...',
 ];

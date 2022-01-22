@@ -39,11 +39,17 @@
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     @foreach($events as $event)
                         <div
-                            x-data=""
-                            id="event-{{ $event['id'] }}"
+                            @if(!$event['marked'])
+                                x-data="{ disabled: false, marked: false }"
+                            @else
+                                x-data="{ disabled: true, marked: true }"
+                            @endif
 
+                            x-bind:style="disabled && { opacity: 0.5 }"
+
+                            id="event-{{ $event['id'] }}"
                             class="p-6 bg-white border-b-2 border-gray-200"
-                            style="border-color: {{ $event['color'] }}; opacity: {{ !$event['marked'] ? 1 : 0.5 }}"
+                            style="border-color: {{ $event['color'] }};"
                         >
                             <article class="event">
                                 <div class="event__date">
@@ -54,28 +60,40 @@
                                     <div class="date__end ml-1">{{ $event['endDate']->format('H:i') }}</div>
                                 </div>
                                 <div class="event__name ml-1">{{ $event['name'] }}</div>
-                                @if(!$event['marked'])
-                                    <div class="event__actions" style="color: {{ $event['color'] }}">
-                                        <button
-                                            wire:click="markEventAs('{{ $event['id'] }}', 'done')"
-                                            x-on:click="document.querySelector('#event-{{ $event['id'] }}').remove()"
+                                <div
+                                    class="event__actions"
+                                    style="color: {{ $event['color'] }}"
+                                >
+                                    <div
+                                        x-show="disabled && !marked"
 
-                                            type="button"
-                                            class="bg-white-700 font-medium rounded-lg text-xl text-center inline-flex items-center"
-                                        >
-                                            <i class="fas fa-check"></i>
-                                        </button>
-                                        <button
-                                            wire:click="markEventAs('{{ $event['id'] }}', 'skipped')"
-                                            x-on:click="document.querySelector('#event-{{ $event['id'] }}').remove()"
-
-                                            type="button"
-                                            class="bg-white-700 font-medium rounded-lg text-xl text-center inline-flex items-center ml-3"
-                                        >
-                                            <i class="fas fa-times"></i>
-                                        </button>
+                                        class="flex justify-center items-center"
+                                    >
+                                        <p>{{ __('calendar.event_status_updating') }}</p>
                                     </div>
-                                @endif
+                                    <button
+                                        x-show="!disabled"
+
+                                        wire:click="markEventAs('{{ $event['id'] }}', 'done')"
+                                        x-on:click="disabled = true;"
+
+                                        type="button"
+                                        class="bg-white-700 font-medium rounded-lg text-xl text-center inline-flex items-center"
+                                    >
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button
+                                        x-show="!disabled"
+
+                                        wire:click="markEventAs('{{ $event['id'] }}', 'skipped')"
+                                        x-on:click="disabled = true;"
+
+                                        type="button"
+                                        class="bg-white-700 font-medium rounded-lg text-xl text-center inline-flex items-center ml-3"
+                                    >
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
                             </article>
                         </div>
                     @endforeach
