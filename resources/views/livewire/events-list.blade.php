@@ -52,7 +52,7 @@
                             style="border-color: {{ $event['color'] }};"
                         >
                             <article class="event">
-                                <div class="event__date">
+                                <div class="event__left">
                                     <div class="date__start">{{ $event['startDate']->format('H:i') }} =></div>
                                     @if($event['leftTime'])
                                         <div class="date__left ml-1">{{ gmdate('H:i:s', $event['leftTime']) }} =></div>
@@ -60,8 +60,9 @@
                                     <div class="date__end ml-1">{{ $event['endDate']->format('H:i') }}</div>
                                 </div>
                                 <div class="event__name ml-1">{{ $event['name'] }}</div>
+{{--                                <div class="event__name ml-1">{{ \Illuminate\Support\Str::random(16) }}</div>--}}
                                 <div
-                                    class="event__actions"
+                                    class="event__right"
                                     style="color: {{ $event['color'] }}"
                                 >
                                     <div

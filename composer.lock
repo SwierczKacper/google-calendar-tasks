@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "78bd621878cd94af5d14d32d5946cbeb",
+    "content-hash": "1127e59ca57a7f4f2d16970442cbfd67",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -61,6 +61,65 @@
                 "source": "https://github.com/asm89/stack-cors/tree/v2.0.5"
             },
             "time": "2022-01-03T15:27:13+00:00"
+        },
+        {
+            "name": "bkwld/cloner",
+            "version": "3.9.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BKWLD/cloner.git",
+                "reference": "825ad2cb237660bdef4d4aad3c539efb9a7db0a8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BKWLD/cloner/zipball/825ad2cb237660bdef4d4aad3c539efb9a7db0a8",
+                "reference": "825ad2cb237660bdef4d4aad3c539efb9a7db0a8",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "bkwld/upchuck": "^2.6@dev",
+                "illuminate/database": "^5.5|^6.0",
+                "league/flysystem-vfs": "^1.0",
+                "mockery/mockery": "^1.2.3",
+                "phpunit/phpunit": "~6.0|~8.0",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "suggest": {
+                "bkwld/upchuck": "Required for replicating of files."
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Bkwld\\Cloner\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Bkwld\\Cloner\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Robert Reinhard",
+                    "email": "info@bkwld.com"
+                }
+            ],
+            "description": "A trait for Laravel Eloquent models that lets you clone of a model and it's relationships, including files.",
+            "support": {
+                "issues": "https://github.com/BKWLD/cloner/issues",
+                "source": "https://github.com/BKWLD/cloner/tree/3.9.2"
+            },
+            "time": "2020-12-23T18:24:13+00:00"
         },
         {
             "name": "brick/math",
@@ -3363,81 +3422,6 @@
                 }
             ],
             "time": "2021-09-25T23:10:38+00:00"
-        },
-        {
-            "name": "spatie/laravel-google-calendar",
-            "version": "3.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-google-calendar.git",
-                "reference": "b5e9e497c1fc6be5a4a2bb18ddf53b6c711648f7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-google-calendar/zipball/b5e9e497c1fc6be5a4a2bb18ddf53b6c711648f7",
-                "reference": "b5e9e497c1fc6be5a4a2bb18ddf53b6c711648f7",
-                "shasum": ""
-            },
-            "require": {
-                "google/apiclient": "^2.2",
-                "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
-                "nesbot/carbon": "^2.0",
-                "php": "^7.2|^8.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.3.3|^1.4",
-                "orchestra/testbench": "^4.0|^5.0|^6.0|^7.0",
-                "phpunit/phpunit": "^8.4|^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\GoogleCalendar\\GoogleCalendarServiceProvider"
-                    ],
-                    "aliases": {
-                        "GoogleCalendar": "Spatie\\GoogleCalendar\\GoogleCalendarFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\GoogleCalendar\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Manage events on a Google Calendar",
-            "homepage": "https://github.com/spatie/laravel-google-calendar",
-            "keywords": [
-                "calendar",
-                "event",
-                "google",
-                "laravel-google-calendar",
-                "schedule",
-                "spatie"
-            ],
-            "support": {
-                "issues": "https://github.com/spatie/laravel-google-calendar/issues",
-                "source": "https://github.com/spatie/laravel-google-calendar/tree/3.5.0"
-            },
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                }
-            ],
-            "time": "2022-01-13T09:43:27+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

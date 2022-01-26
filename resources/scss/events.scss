@@ -6,14 +6,19 @@
     position: relative;
 }
 
-.event__date
+.event__left
 {
     display: flex;
     position: absolute;
     left: 0;
 }
 
-.event__actions
+.event__date
+{
+    display: flex;
+}
+
+.event__right
 {
     display: flex;
     position: absolute;

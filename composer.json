@@ -6,6 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0",
+        "bkwld/cloner": "^3.9",
         "fruitcake/laravel-cors": "^2.0",
         "google/apiclient": "^2.12",
         "guzzlehttp/guzzle": "^7.0.1",
@@ -13,8 +14,7 @@
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
-        "livewire/livewire": "^2.9",
-        "spatie/laravel-google-calendar": "^3.5"
+        "livewire/livewire": "^2.9"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
@@ -33,7 +33,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

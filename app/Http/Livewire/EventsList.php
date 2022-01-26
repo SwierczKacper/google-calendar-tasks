@@ -2,13 +2,13 @@
 
 namespace App\Http\Livewire;
 
+use App\Services\GoogleCalendarService;
+use Google\Service\Calendar\Event;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Livewire\Component;
-use Spatie\GoogleCalendar\Event;
-use Symfony\Component\ErrorHandler\Debug;
 
 class EventsList extends Component
 {
@@ -66,11 +66,12 @@ class EventsList extends Component
      */
     public function markEventAs(string $eventId, string $action): void
     {
-        $event = Event::find($eventId); //find google calendar event by id
+        $event = resolve(GoogleCalendarService::class)->getEvent($eventId); //find google calendar event by id
 
-        if ($this->determineIfEventClear($event->name)) { //check if name can be changed
-            $event->name .= __('calendar.' . $action . '_suffix'); //change name
-            $event->save(); //save event
+        if ($this->determineIfEventClear($event->getSummary())) { //check if name can be changed
+            $event->setSummary($event->getSummary() . __('calendar.' . $action . '_suffix')); //change name
+
+            resolve(GoogleCalendarService::class)->updateEvent($event); //update event with new name
 
             $this->cacheClear();
         }
@@ -81,7 +82,7 @@ class EventsList extends Component
         $this->today = $this->tomorrow;
         $this->tomorrow = Carbon::parse($this->tomorrow)->addDay()->format('d.m.Y');
 
-        if($this->today >= Carbon::today()) { //if today or future
+        if ($this->today >= Carbon::today()) { //if today or future
             $this->displayMarked = false; //hide already marked events
         }
     }
@@ -103,24 +104,24 @@ class EventsList extends Component
      */
     public function cacheClear()
     {
-        Cache::delete('calendar_events_' . $this->today); //clear cache, because in method boot() we are loading cached events
+        Cache::delete('calendar_events_' . $this->today);
     }
 
     public function render()
     {
         return view('livewire.events-list')->with([
             'events' => Cache::remember('calendar_events_' . $this->today, 86400, function () { //if cached events exists return cached version
-                return Event::get(Carbon::parse($this->today), Carbon::parse($this->tomorrow)); //get events in specific range
-            })->map(function ($event) {
-                if ($this->displayMarked || $this->determineIfEventClear($event->name)) {
+                return collect(resolve(GoogleCalendarService::class)->listEvents(Carbon::parse($this->today), Carbon::parse($this->tomorrow))->getItems());
+            })->map(function (Event $event) {
+                if ($this->displayMarked || $this->determineIfEventClear($event->getSummary())) {
                     return [
-                        'name' => $event->name,
+                        'name' => $event->getSummary(),
                         'id' => $event->id,
                         'color' => $this->getEventColor($event->colorId),
                         'startDate' => Carbon::parse($event->start->dateTime ?? $event->start->date),
                         'endDate' => Carbon::parse($event->end->dateTime ?? $event->end->date),
                         'leftTime' => $this->getEventLeftSeconds($event),
-                        'marked' => !$this->determineIfEventClear($event->name),
+                        'marked' => !$this->determineIfEventClear($event->getSummary()),
                     ];
                 }
             })->filter(),
