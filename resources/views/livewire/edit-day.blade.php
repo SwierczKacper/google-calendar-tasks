@@ -18,10 +18,10 @@
     </header>
 
     <!-- Page Content -->
-    <main>
+    <main class="xl:px-0 px-6">
         <div
-            wire:loading.class.remove="hidden"
-            class="py-12 flex w-4/5 mx-auto hidden"
+            wire:loading.class.remove="hidden sm:hidden md:hidden lg:hidden xl:hidden"
+            class="py-12 flex lg:flex-row flex-col-reverse xl:w-4/5 w-full mx-auto hidden sm:hidden md:hidden lg:hidden xl:hidden"
         >
             <div class="px-2 w-full">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -32,10 +32,10 @@
             </div>
         </div>
         <div
-            wire:loading.class="hidden"
-            class="py-12 flex w-4/5 mx-auto "
+            wire:loading.class="hidden sm:hidden md:hidden lg:hidden xl:hidden"
+            class="py-12 flex lg:flex-row flex-col-reverse xl:w-4/5 w-full mx-auto "
         >
-            <div class="px-2 w-4/5">
+            <div class="px-2 lg:w-4/5 w-full">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="px-4 py-5 bg-white space-y-2 sm:p-6">
                         <div class="text-base font-medium text-gray-900">{{ __('calendar.packages_apply_preview_day') }}</div>
@@ -60,14 +60,14 @@
                                 class="p-6 bg-white border-b-2 border-gray-200"
                                 style="border-color: {{ $event['color'] }};"
                             >
-                                <article class="event">
-                                    <div class="event__left">
-                                        <div class="date__start">{{ $event['startDate']->format('H:i') }} =></div>
-                                        <div class="date__end ml-1">{{ $event['endDate']->format('H:i') }}</div>
+                                <article class="flex flex-col sm:flex-row items-center justify-center relative">
+                                    <div class="flex sm:absolute sm:left-0 items-center justify-center">
+                                        <div class="">{{ $event['startDate']->format('H:i') }} =></div>
+                                        <div class="ml-1">{{ $event['endDate']->format('H:i') }}</div>
                                     </div>
-                                    <div class="event__name ml-1">{{ $event['name'] }}</div>
+                                    <div class="text-center ml-1">{{ $event['name'] }}</div>
                                     <div
-                                        class="event__right  flex justify-center items-center" style="margin-top: 20px;"
+                                        class="flex mt-3 sm:mt-0 sm:absolute sm:right-0 items-center justify-center"
                                     >
                                         <button
                                             wire:click="removeEvent('{{ $event['recurringEventId'] }}')"
@@ -94,7 +94,7 @@
                     </div>
                 </div>
             </div>
-            <div class="px-2 w-1/5">
+            <div class="px-2 lg:w-1/5 w-full mb-3 lg:mb-0">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="px-4 py-5 bg-white space-y-2 sm:p-6">
                         <div class="text-base font-medium text-gray-900">{{ __('calendar.button_refresh') }}</div>

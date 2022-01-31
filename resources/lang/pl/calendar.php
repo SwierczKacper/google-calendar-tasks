@@ -19,7 +19,8 @@ return [
     'result_label' => 'Wynik: :result',
     'date_label' => 'Data',
     'no_events_label' => 'Brak wydarzeń!',
-    'duration_label' => 'Czas Trwania :duration',
+    'duration_label' => 'Czas Trwania',
+    'duration_count_label' => 'Czas trwania :duration',
     'duration_minutes_label' => 'Czas Trwania (minuty)',
     'hidden_info' => 'Wyświetl już oznaczone zadania.',
 

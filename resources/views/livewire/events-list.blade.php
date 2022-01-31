@@ -33,9 +33,9 @@
     </header>
 
     <!-- Page Content -->
-    <main>
-        <div class="py-12 flex w-4/5 mx-auto ">
-            <div class="px-2 w-4/5">
+    <main class="xl:px-0 px-6">
+        <div class="py-12 flex lg:flex-row flex-col-reverse xl:w-4/5 w-full mx-auto ">
+            <div class="px-2 lg:w-4/5 w-full">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     @foreach($events as $event)
                         <div
@@ -51,18 +51,17 @@
                             class="p-6 bg-white border-b-2 border-gray-200"
                             style="border-color: {{ $event['color'] }};"
                         >
-                            <article class="event">
-                                <div class="event__left">
-                                    <div class="date__start">{{ $event['startDate']->format('H:i') }} =></div>
+                            <article class="flex flex-col sm:flex-row items-center justify-center relative">
+                                <div class="flex sm:absolute sm:left-0 items-center justify-center">
+                                    <div class="">{{ $event['startDate']->format('H:i') }} =></div>
                                     @if($event['leftTime'])
-                                        <div class="date__left ml-1">{{ gmdate('H:i:s', $event['leftTime']) }} =></div>
+                                        <div class="ml-1">{{ gmdate('H:i:s', $event['leftTime']) }} =></div>
                                     @endif
-                                    <div class="date__end ml-1">{{ $event['endDate']->format('H:i') }}</div>
+                                    <div class="ml-1">{{ $event['endDate']->format('H:i') }}</div>
                                 </div>
-                                <div class="event__name ml-1">{{ $event['name'] }}</div>
-{{--                                <div class="event__name ml-1">{{ \Illuminate\Support\Str::random(16) }}</div>--}}
+                                <div class="ml-1 text-center">{{ $event['name'] }}</div>
                                 <div
-                                    class="event__right"
+                                    class="flex mt-3 sm:mt-0 sm:absolute sm:right-0 items-center justify-center"
                                     style="color: {{ $event['color'] }}"
                                 >
                                     <div
@@ -100,7 +99,7 @@
                     @endforeach
                 </div>
             </div>
-            <div class="px-2 w-1/5">
+            <div class="px-2 lg:w-1/5 w-full mb-3 lg:mb-0">
                 <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="px-4 py-5 bg-white space-y-2 sm:p-6">
                         <div class="text-base font-medium text-gray-900">{{ __('calendar.settings_label') }}</div>

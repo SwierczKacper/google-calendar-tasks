@@ -35,12 +35,12 @@
                 </header>
 
                 <!-- Page Content -->
-                <main>
-                    <div class="py-12 flex w-4/5 mx-auto ">
-                        <div class="px-2 w-4/5">
+                <main class="xl:px-0 px-6">
+                    <div class="py-12 flex lg:flex-row flex-col-reverse xl:w-4/5 w-full mx-auto">
+                        <div class="px-2 lg:w-4/5 w-full">
                             @livewire('packages.packages-list')
                         </div>
-                        <div class="px-2 w-1/5">
+                        <div class="px-2 lg:w-1/5 w-full mb-3 lg:mb-0">
                             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                                 <div class="px-4 py-5 bg-white space-y-2 sm:p-6">
                                     <div class="text-base font-medium text-gray-900">{{ __('calendar.settings_label') }}</div>
