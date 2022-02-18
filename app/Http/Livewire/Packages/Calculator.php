@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Packages;
 
 use App\Models\Packages\Package;
+use App\Models\Packages\PackageItem;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Livewire\Component;
 
 class Calculator extends Component
@@ -32,10 +34,10 @@ class Calculator extends Component
 
     public function updatedCalculatorItems($value, $name)
     {
-        if ($value != '' && $this->calculatorStart != '') {
+        if ($value != '' && $this->calculatorStart != '') { //if not selected "Delete" option
             $this->calculate();
-        } elseif (isset($this->calculatorItems[$name])) {
-            unset($this->calculatorItems[$name]);
+        } elseif (isset($this->calculatorItems[Str::before($name, '.')])) {
+            unset($this->calculatorItems[Str::before($name, '.')]);
 
             $this->calculate();
         }
@@ -46,8 +48,23 @@ class Calculator extends Component
         $start = Carbon::parse($this->calculatorStart)->setTimezone(config('app.timezone'));
         $end = clone $start;
 
-        foreach ($this->calculatorItems as $item) {
-            $end->addMinutes(Package::with('items')->find($item)->getSummaryTime());
+        foreach ($this->calculatorItems as $key => $item) {
+            $this->calculatorItems[$key]['start'] = clone $end;
+
+            $this->calculatorItems[$key]['items'] = Package::find($item['id'])->items->map(function (PackageItem $packageItem) use (&$end) {
+                $newItem['id'] = $packageItem->id;
+                $newItem['name'] = $packageItem->name;
+                $newItem['duration'] = $packageItem->duration;
+                $newItem['start'] = clone $end;
+
+                $end->addMinutes($packageItem->duration);
+
+                $newItem['end'] = clone $end;
+
+                return $newItem;
+            })->toArray();
+
+            $this->calculatorItems[$key]['end'] = clone $end;
         }
 
         $this->calculatorEnd = $end->format('H:i');
@@ -55,9 +72,26 @@ class Calculator extends Component
 
     public function addItem()
     {
-        $newPackage = Package::limit(1)->get('id')->first()->id;
+        $newPackage = Package::limit(1)->get('id')->first();
 
-        $this->calculatorItems[] = $newPackage;
+        $start = Carbon::parse($this->calculatorStart)->setTimezone(config('app.timezone'));
+        $end = clone $start;
+
+        $this->calculatorItems[] = [
+            'id' => $newPackage->id,
+            'items' => $newPackage->items->map(function (PackageItem $packageItem) use (&$end) {
+                $newItem['id'] = $packageItem->id;
+                $newItem['name'] = $packageItem->name;
+                $newItem['duration'] = $packageItem->duration;
+                $newItem['start'] = clone $end;
+
+                $end->addMinutes($packageItem->duration);
+
+                $newItem['end'] = clone $end;
+
+                return $newItem;
+            })->toArray(),
+        ];
 
         $this->updatedCalculatorItems($newPackage, count($this->calculatorItems) - 1);
     }

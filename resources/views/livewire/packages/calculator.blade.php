@@ -25,13 +25,17 @@
         <label class="block text-gray-700 text-sm font-bold mb-2" for="packages">
             {{ __('calendar.packages_label') }}
         </label>
-        @foreach($calculatorItems as $package)
-            <select wire:model.debounce.1000ms="calculatorItems.{{ $loop->index }}" class="mb-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+        @foreach($calculatorItems as $mainPackage)
+            @php Debugbar::info($mainPackage) @endphp
+            <select wire:model.debounce.1000ms="calculatorItems.{{ $loop->index }}.id" class="mb-3 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
                 <option value="">{{ __('calendar.button_remove') }}</option>
                 @foreach($packages as $package)
                     <option value="{{ $package->id }}">{{ $package->name }} - {{ gmdate("H:i:s", $package->getSummaryTime() * 60) }}</option>
                 @endforeach
             </select>
+            @foreach($mainPackage['items'] as $packageItem)
+                <p class="text-xs {{ $loop->last ? 'mb-3' : '' }}">{{ $packageItem['start']->format('H:i') }} => {{ $packageItem['end']->format('H:i') }} - {{ $packageItem['name'] }} - {{  gmdate("H:i:s", $packageItem['duration'] * 60) }}</p>
+            @endforeach
         @endforeach
         <button
             wire:click="addItem()"
